@@ -1,4 +1,4 @@
-package hello_World;
+package pract2;
 
 public class helloWorld {
 

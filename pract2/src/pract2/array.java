@@ -1,4 +1,4 @@
-package array;
+package pract2;
 
 public class array {
 
@@ -17,6 +17,10 @@ public class array {
 		
 		for(int i=0;i<statePopulation.length;i++) {
 			System.out.println("statePopulation["+i+"] is :"+statePopulation[i]);;
+			
+		for(int elm: statePopulation) {
+			System.out.println(elm);
+		}
 			
 	
 	}

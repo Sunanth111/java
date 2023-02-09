@@ -1,4 +1,4 @@
-package input;
+package pract2;
 
 import java.util.Scanner;
 
@@ -16,7 +16,6 @@ public class input {
 			myarray[i]=in.nextInt();
 		}
 					
-		System.out.println(myarray);
 		for (int i : myarray)
 			System.out.print(i + " ");
 	
