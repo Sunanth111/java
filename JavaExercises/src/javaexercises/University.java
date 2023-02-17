@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
-class Person{
+/*class {
 	String name;
 	String email;
 	int mobileNo;
@@ -29,14 +29,15 @@ class Person{
 		System.out.println(email);
 		System.out.println(mobileNo);
 	}
-}
+}*/
 
 
 
 
-class Student extends Person{
+/*class Student extends Person{
 	int Id;
 	double cgpa;
+	ArrayList<String> studentCourseList= new ArrayList<>();
 	
 	public void addDetails() {
 		
@@ -49,12 +50,20 @@ class Student extends Person{
 		cgpa=sc.nextDouble();
 		
 		
+		
+		
 	}
 	
 	public void registerCourse() {
+		System.out.println("the course list is:");
+		
+
+		
+		}
 		
 		
-	}
+	
+
 	
 	public void dispDetails() {
 		super.dispDetails();
@@ -64,8 +73,9 @@ class Student extends Person{
 		
 	}
 }
+*/
 
-
+/*
 class Faculty extends Person{
 	int Id;
 	String facultyposition;
@@ -90,18 +100,19 @@ class Faculty extends Person{
 		
 	}
 }
-
+*/
+/*
 class Course{
 	Scanner sc=new Scanner(System.in);
 	String Id;
 	String coursetitle;
 	double courseCredit;
 	
-	/*Course(String Id,String coursetitle,double courseCredit){
-		this.Id=Id;
-		this.courseCredit=courseCredit;
-		this.coursetitle=coursetitle;
-	}*/
+	      //Course(String Id,String coursetitle,double courseCredit){
+		  // this.Id=Id;
+	     //	this.courseCredit=courseCredit;
+	     	//this.coursetitle=coursetitle;
+	    
 		
 		
 	public void addCourse() {
@@ -121,10 +132,7 @@ class Course{
 		
 	}
 	
-}
-
-
-
+}*/
 
 
 
@@ -141,9 +149,14 @@ public class University {
 		
 		
 	public void add() {
-			
-		int choiceAdd;
+		
 		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter no individuals wanted to add");
+		int count=sc.nextInt();
+		int j=0;
+		do {
+		int choiceAdd;
+		
 		System.out.println("1 : Add a student");
 		System.out.println("2 : Add a faculty");
 		System.out.println("3 : Add a course");
@@ -165,9 +178,7 @@ public class University {
 					//F.dispDetails();
 					//add this object to faculty array
 					facultyList.add(F);
-					System.out.println(facultyList);
-					
-					
+					//System.out.println(facultyList);
 					break;
 					
 			case 3: //add a course
@@ -179,8 +190,15 @@ public class University {
 						course.dispDetails();*/
 					
 			}
+		j++;
 			
-		}
+		}while( j<count);
+		
+	}
+		
+		
+		
+		
 		public void delete() {
 			
 			int choiceDelete;
