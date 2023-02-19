@@ -2,11 +2,11 @@ package javaexercises;
 
 import java.util.Scanner;
 
-class Course{
-	Scanner sc=new Scanner(System.in);
-	String Id;
-	String coursetitle;
-	double courseCredit;
+ class Course{
+	 Scanner sc=new Scanner(System.in);
+	 String Id;
+	 String coursetitle;
+	 double courseCredit;
 	
 	/*Course(String Id,String coursetitle,double courseCredit){
 		this.Id=Id;

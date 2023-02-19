@@ -1,8 +1,12 @@
 package javaexercises;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.Map.Entry;
 
 /*class {
 	String name;
@@ -30,10 +34,6 @@ import java.util.Scanner;
 		System.out.println(mobileNo);
 	}
 }*/
-
-
-
-
 /*class Student extends Person{
 	int Id;
 	double cgpa;
@@ -74,7 +74,6 @@ import java.util.Scanner;
 	}
 }
 */
-
 /*
 class Faculty extends Person{
 	int Id;
@@ -138,14 +137,19 @@ class Course{
 
 public class University {
 	
-	ArrayList<Student> studentList = new ArrayList<>();
+	static ArrayList<Student> studentList = new ArrayList<>();
 	ArrayList<Faculty> facultyList = new ArrayList<>();
 	ArrayList<Course> courseList = new ArrayList<>();
 	ArrayList<University> university = new ArrayList<>();
 	
-	
-		
-	
+	//Course c=new Course();
+	//Map<String, String> hasmap=new HashMap<String,String>();
+
+	ArrayList<Student> studentCourseList=new ArrayList<>();
+	ArrayList<String> facultyCourseList=new ArrayList<>();
+	// Student S = new Student();
+	//private static Map<String, String> studentmap;
+	//private static Map<String, String> facultymap;
 		
 		
 	public void add() {
@@ -166,11 +170,48 @@ public class University {
 				
 			case 1: //add a student
 					Student S = new Student();
+					//Student St;
+					int z=0;
 					S.addDetails();
 					//S.dispDetails();
 					// add this object to student array
 					studentList.add(S);
+					System.out.println("Do course register");
+					System.out.println(" true/false");
+					boolean now=sc.nextBoolean();
+					if(now) {
+					System.out.println("no of courses to be registered");
+					int x=sc.nextInt();
+					
+						
+						
+						//Course c=new Course();
+						
+						if(courseList.isEmpty()) {
+							System.out.println("no course added");
+						break;
+						}
+						else {
+							for(Course course:courseList) {
+								course.dispDetails();
+							}
+								
+							do {
+							System.out.println("choose the course");
+							String title=sc.next();
+						
+							int i=0;
+							studentCourseList=S.registerCourse(S.name,title);
+						 i++;
+						 z++;
+						 System.out.println("successfully Registered");
+						}while(z<x);
+					
+						break;
+					}
+					}
 					break;
+				
 			
 			case 2:	//add a faculty
 					Faculty F = new Faculty();
@@ -179,7 +220,33 @@ public class University {
 					//add this object to faculty array
 					facultyList.add(F);
 					//System.out.println(facultyList);
+					System.out.println("Do course register");
+					//Course c=new Course();
+					System.out.println("view course true/fals");
+					boolean b=sc.nextBoolean();
+					if(b) {
+						
+						
+						//Course c=new Course();
+						
+						if(courseList.isEmpty()) {
+							System.out.println("no course added");
+						break;
+						}
+						else {
+							for(Course course:courseList) {
+								course.dispDetails();
+							}
+								
+							//}
+							System.out.println("choose the course");
+							String title=sc.next();
+						
+							facultyCourseList=F.registerCourse(F.name,title);
+							
+						}
 					break;
+					}
 					
 			case 3: //add a course
 				Course c = new Course();
@@ -199,65 +266,74 @@ public class University {
 		
 		
 		
-		public void delete() {
+	public void delete() {
 			
-			int choiceDelete;
-			Scanner sc = new Scanner(System.in);
-			System.out.println("1 : Delete a student");
-			System.out.println("2 : Delete a faculty");
-			System.out.println("3 : Delete a course");
-			System.out.println("Make your choice");
-			choiceDelete = sc.nextInt();
-			switch(choiceDelete) {
+		int choiceDelete;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("1 : Delete a student");
+		System.out.println("2 : Delete a faculty");
+		System.out.println("3 : Delete a course");
+		System.out.println("Make your choice");
+		choiceDelete = sc.nextInt();
+		switch(choiceDelete) {
 				
-			case 1: //Delete a student
-					System.out.println("Enter the Id of the student to be deleted");
-					int studId =sc.nextInt();
-					for(Student s: studentList)
-					{
-						if(s.Id==studId) {
-							studentList.remove(s);
+		case 1: //Delete a student
+				System.out.println("Enter the Id of the student to be deleted");
+				int studId =sc.nextInt();
+				for(Student s: studentList)
+				{
+					if(s.Id==studId) {
+						System.out.println("hi");
+						studentList.remove(s);
+						for(Student st: studentCourseList)
+						{
+							if(s.name==st.name)
+								Student.studentCourseList.remove(st);
 						}
-					}
+				}	
+				}
 					
 					//to print
-					for(Student student :studentList)
-						student.dispDetails();
+				for(Student student :studentList)
+					student.dispDetails();
+				
+				for(Student st:studentCourseList) {
+					st.printDetails();;
+				}
+				
 					
-					break;
+				break;
 			
-			case 2:	//Delete a faculty
-					System.out.println("Enter the Id of the faculty to be deleted");
-					int facId =sc.nextInt();
-					for(Faculty f: facultyList)
-					{
-						if(f.Id==facId) {
-							facultyList.remove(f);
-						}
+		case 2:	//Delete a faculty
+				System.out.println("Enter the Id of the faculty to be deleted");
+				int facId =sc.nextInt();
+				for(Faculty f: facultyList)
+				{
+					if(f.Id==facId) {
+						facultyList.remove(f);
 					}
+				}
 				
 					//to print
-					for(Faculty faculty :facultyList)
-						faculty.dispDetails();
+				for(Faculty faculty :facultyList)
+					faculty.dispDetails();
 				
-					break;
+				break;
 					
-			case 3: //Delete a course
-					System.out.println("Enter the Id of the course to be deleted");
-					String crId =sc.next();
-					for(Course c: courseList)
-					{
-						if(Objects.equals(crId, c.Id)) {
-							courseList.remove(c);
-						}
+		case 3: //Delete a course
+				System.out.println("Enter the Id of the course to be deleted");
+				String crId =sc.next();
+				for(Course c: courseList)
+				{
+					if(Objects.equals(crId, c.Id)) {
+						courseList.remove(c);
 					}
+				}
 					
-					for(Course course :courseList)
-						course.dispDetails();
-					break;
-					
-					
-					
+				for(Course course :courseList)
+					course.dispDetails();
+				break;
+							
 			}
 			
 		}
@@ -265,10 +341,13 @@ public class University {
 		
 		public void print() {
 			int choiceSelect;
+			//Student st= new Student();
 			Scanner sc = new Scanner(System.in);
 			System.out.println("1 : Print a student");
 			System.out.println("2 : Print a faculty");
 			System.out.println("3 : Print a course");
+			System.out.println("4 : Print a studentCourseList");
+			System.out.println("5: Print facultyCourseList");
 			System.out.println("Make your choice");
 			choiceSelect = sc.nextInt();
 			switch(choiceSelect) {
@@ -292,11 +371,43 @@ public class University {
 						course.dispDetails();
 					break;
 					
+			case 4://print student course list
+//				for (int i = 0; i < studentCourseList.size(); i++) {
+//				      System.out.println(studentCourseList.get(i) + " ");
+
+				
+					Student st = new Student();
+					//for(Student st:studentCourseList) {
+						st.printDetails();
+					//}
+				//System.out.println(S.map);
+					//S.studenCoursetList(S.map);
+				/* 	Set<Entry<String, String>> entrySetStud = studentmap.entrySet(); 
+					//Creating an ArrayList of Entry objects                
+					ArrayList<Entry<String, String>> studentCourseList = new ArrayList<Entry<String, String>>(entrySetStud);
+					for (Entry<String, String> entry : studentCourseList) 
+				       { 
+				           System.out.println(entry.getKey()+" : "+entry.getValue()); 
+				       } */
 					
 					
-			}
-			
+			case 5:	//print student course list
+				for(String f:facultyCourseList) {
+					System.out.println(f);
+				}
+				}
 		}
+//				
+//				Set<Entry<String, String>> entrySetFac = facultymap.entrySet(); 
+//				//Creating an ArrayList of Entry objects                
+//				ArrayList<Entry<String, String>> facultyCourseList = new ArrayList<Entry<String, String>>(entrySetFac);
+//				for (Entry<String, String> entry : facultyCourseList) 
+//			       { 
+//			           System.out.println(entry.getKey()+" : "+entry.getValue()); 
+//			       } 
+//			}
+//			
+//		}
 		public void search() {
 			int choiceSelect;
 			Scanner sc = new Scanner(System.in);
@@ -415,7 +526,7 @@ public class University {
 			
 		}
 		
-		
+/*		
 		public void reg() {
 			
 			Scanner sc = new Scanner(System.in);
@@ -430,10 +541,9 @@ public class University {
 			}
 			
 				System.out.println("select the course");
-				String name=sc.next();
-				for(Course c:courseList) {
-					if (c.equals(name)) {
-						Student s=new Student();
+				String title=sc.next();
+				S.registercourse
+				
 						
 					}
 				}
@@ -441,7 +551,7 @@ public class University {
 			
 			}	
 			
-		}
+		}*/
 			
 		
 		
@@ -461,7 +571,7 @@ public class University {
 				System.out.println("2 : Delete");
 				System.out.println("3 : Search");
 				System.out.println("4 : Print");
-				System.out.println("5 : register course");
+				//System.out.println("5 : register course");
 				System.out.println("Make your choice");
 				choice = sc.nextInt();
 				
@@ -479,9 +589,9 @@ public class University {
 				case 4: //print
 						ktu.print();
 						break;
-				case 5://register
-						ktu.reg();
-						break;
+				//case 5://register
+					//	ktu.reg();
+						//break;
 				}
 				
 			}	

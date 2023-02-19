@@ -1,8 +1,8 @@
-package pract2;
+//package pract2;
 
 import java.util.Scanner;
 
-public class Browser {
+ class Browser {
 	
 	private static String[] visitedURLs=new String[10];
 	public Browser() {
@@ -26,7 +26,7 @@ public class Browser {
 		}
 	}
 }
-class URLs{
+public class URLs{
 	
 	public static void main(String[] args) {
 		String[] sites= new String[3];
