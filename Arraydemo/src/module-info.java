@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author sunan
- *
- */
-module Arraydemo {
-}
