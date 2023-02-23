@@ -146,7 +146,7 @@ public class University {
 	//Map<String, String> hasmap=new HashMap<String,String>();
 
 	ArrayList<Student> studentCourseList=new ArrayList<>();
-	ArrayList<String> facultyCourseList=new ArrayList<>();
+	ArrayList<Faculty> facultyCourseList=new ArrayList<>();
 	// Student S = new Student();
 	//private static Map<String, String> studentmap;
 	//private static Map<String, String> facultymap;
@@ -391,11 +391,16 @@ public class University {
 				       } */
 					
 					
-			case 5:	//print student course list
-				for(String f:facultyCourseList) {
-					System.out.println(f);
+			case 5:	//print faculty course list
+				Faculty fc = new Faculty();
+					fc.printDetails();
+				
+				
+				
+				//for(String f:facultyCourseList) {
+					//System.out.println(f);
 				}
-				}
+				
 		}
 //				
 //				Set<Entry<String, String>> entrySetFac = facultymap.entrySet(); 

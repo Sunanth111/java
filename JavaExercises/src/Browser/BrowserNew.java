@@ -1,6 +1,9 @@
-package javaexercises;
+package Browser;
 
 import java.util.Scanner;
+
+import Browser_Exercise_2.Chrome;
+import Browser_Exercise_2.Firefox;
 
 
 public class BrowserNew {
@@ -17,6 +20,18 @@ public class BrowserNew {
 			}
 		}
 	}
+	
+	public void whoAMI() {
+		System.out.println("I am a Browser");
+	}
+	
+	
+	public void permissions(boolean l,boolean c,boolean m) {
+		System.out.println("isLocationAccessible :"+ l);
+		System.out.println("isCameraAccessible :"+ c);
+		System.out.println("isMicrophoneAccessible :"+ m);
+	}
+	
 	public void addURLs(int x) {
 		String[] addedsites= new String[x];
 		System.out.println("enter the urls");
@@ -65,19 +80,30 @@ public class BrowserNew {
 
 	public void display() {
 		for(int i=0;i<visitedURLs.length;i++) {
+			if(visitedURLs[i] != null) {
 			System.out.println(visitedURLs[i]);
+			}
 		}
 	}
+public static class MyURLs{
 	
-class MyURLs{
 	public static void main(String[] args) {
 		
-		String[] sites= new String[2];
+		BrowserNew newbrow=new BrowserNew();
+		newbrow.whoAMI();
+		
+		System.out.println("enter the number of urls");
 		Scanner sc=new Scanner(System.in);
+		int y=sc.nextInt();
+		String[] sites= new String[y];
+		System.out.println(sites.length);
+		sc.nextLine();
 		for(int i=0;i<sites.length;i++) {
 			sites[i]=sc.nextLine();
+			//System.out.println(i);
 		}
-		BrowserNew mybrow=new BrowserNew(sites);
+		BrowserNew mybrow=new Chrome(sites);
+		BrowserNew ourbrow=new Firefox(sites);
 		mybrow.display();
 		
 		

@@ -6,8 +6,9 @@ import java.util.Map;
 
 class Faculty extends Person{
 	int Id;
+	static String course;
 	String facultyposition;
-	static ArrayList<String> facultyCourseList= new ArrayList<String>();
+	static ArrayList<Faculty> facultyCourseList= new ArrayList<Faculty>();
 	
 	public void addDetails() {
 		
@@ -22,10 +23,19 @@ class Faculty extends Person{
 	}
 	
 	
-	public static ArrayList<String> registerCourse(String x,String y) {
+	public static ArrayList<Faculty> registerCourse(String x,String y) {
 		
-		facultyCourseList.add(x +" registered the Course "+ y);
+		
+		
+		Faculty fc=new Faculty();
+		fc.name=x;
+		fc.course=y;
+		facultyCourseList.add(fc);
 		return(facultyCourseList);
+	
+		
+		//facultyCourseList.add(x +" registered the Course "+ y);
+
 	}
 		
 		
@@ -50,6 +60,12 @@ class Faculty extends Person{
 		System.out.println(facultyposition);
 		
 		
+	}
+	public void printDetails() {
+		for (Faculty fc:facultyCourseList) {
+		      System.out.println(fc.name+" : "+fc.course);
+		      
+		}
 	}
 }
 
