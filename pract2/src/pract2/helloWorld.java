@@ -1,4 +1,4 @@
-//package pract2;
+package pract2;
 
 public class helloWorld {
 

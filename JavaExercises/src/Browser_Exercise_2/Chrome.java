@@ -9,11 +9,12 @@ public class Chrome extends NewBrowser {
 	boolean isCameraAccessible ;
 	boolean isMicrophoneAccessible;
 	
-	static final double versionNumber=1.0;
+	final double versionNumber=1.0;
 	
 	public Chrome() {}
 	
 	public Chrome(String[] chrome) {
+		//System.out.println("this ");
 	super(chrome);
 	}
 	

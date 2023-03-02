@@ -171,7 +171,16 @@ public class NewBrowser {
 			}
 			
 		}
+		
+		Integer wrapcount=count;
+		
+		int intvalue=wrapcount;
+				
 		System.out.println("no of chrome tabs is:"+count);
+		
+		System.out.println("no of chrome tabs in wrapclass is:"+wrapcount);
+		
+		System.out.println("no of chrome tabs in int is:"+intvalue);
 		
 		
 		
