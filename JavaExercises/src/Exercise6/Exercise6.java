@@ -24,13 +24,16 @@ class  InvalidPositionException extends Exception{
 
 class BrowserHistory{
 	
-
+  int currentpage;
+  int page;
 ArrayList<String>urlsList=new ArrayList<String>();
 	void vist(String url) {
 		
 		try {
 			if(url.endsWith(".com")||url.endsWith(".in")||url.endsWith(".org")){
 				urlsList.add(url);
+				page=urlsList.size();
+				
 			}
 			
 			else {
@@ -41,9 +44,12 @@ ArrayList<String>urlsList=new ArrayList<String>();
 			}
 	}
 	String back(int steps) {
+		currentpage=page-(steps+1);
 		try {
-			if(steps<=urlsList.size()) {
-				System.out.println(urlsList.get(steps));
+			if(currentpage>=0) {
+				
+				System.out.println(urlsList.get(currentpage));
+				page=currentpage;
 			}
 			else {
 				throw new NoHistoryFoundException("No History Found");
@@ -57,10 +63,14 @@ ArrayList<String>urlsList=new ArrayList<String>();
 	}
 	
 	String forward(int steps) {
+		currentpage=page+(steps);
+		//System.out.println(page);
 		
 		try {
-			if(steps<=urlsList.size()) {
-				System.out.println(urlsList.get(steps));
+			if(currentpage<urlsList.size()) {
+				System.out.println(urlsList.get(currentpage));
+				
+				page=currentpage;
 			}
 			else {
 				throw new NoHistoryFoundException("No History Found");
@@ -75,8 +85,14 @@ ArrayList<String>urlsList=new ArrayList<String>();
 	
 	String get(int position) {
 		try {
-			if(position>urlsList.size()||position<0) {
-				 throw new InvalidPositionException("Provide only positive values");
+			if(/*position<urlsList.size()&&*/ position>0) {
+				Object[] obj=urlsList.toArray();
+				System.out.println(obj[position]);
+				 
+			}
+			
+			else {
+				throw new InvalidPositionException("Provide only positive values");
 			}
 		}catch(ArrayIndexOutOfBoundsException e) {
 			System.out.println(e);
@@ -138,7 +154,7 @@ public class Exercise6 {
 		case 4:
 			System.out.println("enter the position");
 			int position =sc.nextInt();
-			obj.forward(position);
+			obj.get(position);
 			continue;
 			
 		case 5:
